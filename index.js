@@ -1,5 +1,5 @@
 var cp = require('child_process')
-var duplexer = require('duplexer')
+var duplexer = require('duplexer2')
 var stream = require('stream')
 var hashToArray = require('hash-to-array')
 var createTempFile = require('create-temp-file')()
@@ -40,7 +40,7 @@ module.exports = function soxStream(opts) {
 			duplex.emit(event, data)
 		})
 	}
-	
+
 	function cleanupThenEmitErr(err) {
 		if (!(err instanceof Error)) err = new Error(err)
 		cleanupThenEmit('error', err)
